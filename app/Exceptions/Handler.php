@@ -3,6 +3,11 @@
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Filesystem\Filesystem as File;
+use Illuminate\Foundation\Application as App;
+use Illuminate\Http\Response as Response;
+
 class Handler extends ExceptionHandler {
 
 	/**
@@ -36,7 +41,19 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-		return parent::render($request, $e);
+	    if($e instanceof NotFoundHttpException)
+	    {
+	        return (new Response((new File)->get('angular.html')));
+	    }
+	    return parent::render($request, $e);
+		// if ($this->isHttpException($e))
+		// {
+		// 	return $this->renderHttpException($e);
+		// }
+		// else
+		// {
+		// 	return parent::render($request, $e);
+		// }
 	}
 
 }
