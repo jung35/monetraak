@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace monetraak\Services;
 
-use App\User;
+use monetraak\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace monetraak\Commands;
 
 abstract class Command {
 

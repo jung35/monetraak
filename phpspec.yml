@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: monetraak
+        psr4_prefix: monetraak
         src_path: app
