@@ -1,4 +1,4 @@
-<?php namespace monetraak\Providers;
+<?php namespace MoneTraak\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind(
 			'Illuminate\Contracts\Auth\Registrar',
-			'monetraak\Services\Registrar'
+			'MoneTraak\Services\Registrar'
 		);
 	}
 

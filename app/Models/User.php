@@ -1,4 +1,4 @@
-<?php namespace monetraak;
+<?php namespace MoneTraak\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -30,5 +30,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	public function money()
+	{
+		return $this->hasMany('MoneTraak\Money');
+	}
 
 }

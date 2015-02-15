@@ -1,4 +1,4 @@
-<?php namespace monetraak\Exceptions;
+<?php namespace MoneTraak\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

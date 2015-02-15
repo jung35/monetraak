@@ -1,6 +1,6 @@
-<?php namespace monetraak\Services;
+<?php namespace MoneTraak\Services;
 
-use monetraak\User;
+use MoneTraak\Mondels\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

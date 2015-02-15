@@ -1,4 +1,4 @@
-<?php namespace monetraak\Http\Controllers;
+<?php namespace MoneTraak\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;

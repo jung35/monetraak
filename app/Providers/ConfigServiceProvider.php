@@ -1,4 +1,4 @@
-<?php namespace monetraak\Providers;
+<?php namespace MoneTraak\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

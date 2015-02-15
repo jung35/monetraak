@@ -1,4 +1,4 @@
-<?php namespace monetraak\Http;
+<?php namespace MoneTraak\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -15,7 +15,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'monetraak\Http\Middleware\VerifyCsrfToken',
+		'MoneTraak\Http\Middleware\VerifyCsrfToken',
 	];
 
 	/**
@@ -24,9 +24,9 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'monetraak\Http\Middleware\Authenticate',
-		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'monetraak\Http\Middleware\RedirectIfAuthenticated',
+		'auth'			=> 'MoneTraak\Http\Middleware\Authenticate',
+		'auth.basic'	=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
+		'guest'			=> 'MoneTraak\Http\Middleware\RedirectIfAuthenticated',
 	];
 
 }

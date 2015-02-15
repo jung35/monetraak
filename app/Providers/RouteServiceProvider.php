@@ -1,4 +1,4 @@
-<?php namespace monetraak\Providers;
+<?php namespace MoneTraak\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'monetraak\Http\Controllers';
+	protected $namespace = 'MoneTraak\Http\Controllers';
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.
@@ -24,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		//
+		$router->model('money', 'MoneTraak\Money');
 	}
 
 	/**
