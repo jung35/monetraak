@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMoneyAmountTable extends Migration {
+class CreateMoneyAmountsTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateMoneyAmountTable extends Migration {
      */
     public function up()
     {
-        Schema::create('money_amount', function(Blueprint $table)
+        Schema::create('money_amounts', function(Blueprint $table)
         {
             $table->increments('id');
             $table->boolean('type');
@@ -32,7 +32,7 @@ class CreateMoneyAmountTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('money_amount');
+        Schema::drop('money_amounts');
     }
 
 }

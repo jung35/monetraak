@@ -65,7 +65,7 @@
                                                 <h4 class="title">Modify Money</h4>
                                             </div>
                                             <div class="panel-body">
-                                                {!! Form::open() !!}
+                                                {!! Form::open(['route' => ['money.modify', $money->id], 'method' => 'POST']) !!}
                                                     @include('money.partials.smallForm', ['typeOptions' => ['Add', 'Subtract'], 'buttonText' => 'Submit'])
                                                 {!! Form::close() !!}
                                             </div>

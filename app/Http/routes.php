@@ -20,5 +20,13 @@ Route::controllers([
 
 Route::group(['middleware' => 'auth'], function()
 {
+    Route::group(['prefix' => 'money'], function()
+    {
+        Route::post('/{money}/amount', [
+            'as'   => 'money.modify',
+            'uses' => 'Money\MoneyHandlerController@modify'
+        ]);
+    });
+
     Route::resource('money', 'MoneyController');
 });

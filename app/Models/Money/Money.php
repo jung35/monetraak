@@ -15,4 +15,9 @@ class Money extends Model {
     {
         return $this->belongsTo('MoneTraak\Models\User');
     }
+
+    public function moneyAmount()
+    {
+        return $this->hasMany('MoneTraak\Models\Money\MoneyAmount');
+    }
 }
