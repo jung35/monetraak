@@ -3985,6 +3985,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: inline-block;
   margin-top: 8px;
   margin-bottom: 8px;
 }
@@ -6230,4 +6231,52 @@ body,
 label,
 .checkbox label {
   font-weight: 300;
+}
+.moneyList a:not(.btn) {
+  display: block;
+  text-decoration: none;
+}
+.moneyList a:not(.btn):hover,
+.moneyList a:not(.btn):focus {
+  text-decoration: none;
+}
+.moneyList a:not(.btn):hover .panel-custom,
+.moneyList a:not(.btn):focus .panel-custom {
+  background: rgba(0, 0, 0, 0.05);
+  color: black;
+}
+.moneyList a:not(.btn):hover .panel-custom .panel-body,
+.moneyList a:not(.btn):focus .panel-custom .panel-body {
+  background: rgba(255, 255, 255, 0.6);
+}
+.moneyList .panel-custom {
+  background: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.moneyList .panel-custom .panel-heading {
+  font-weight: bold;
+  font-size: 2em;
+  padding: 10px;
+}
+.moneyList .panel-custom .panel-body {
+  background: white;
+  color: black;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 10px 0;
+}
+.panel-default .title {
+  padding: 0;
+  margin: 0;
+}
+.panel-default h2.title small {
+  font-size: .5em;
+}
+.panel-default .panel-heading {
+  padding: 10px;
+}
+.panel-default .panel-body {
+  padding: 10px 10px 0;
+}
+.form-inline {
+  display: inline-block;
 }

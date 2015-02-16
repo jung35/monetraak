@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function money()
 	{
-		return $this->hasMany('MoneTraak\Money');
+		return $this->hasMany('MoneTraak\Models\Money\Money');
 	}
 
 }

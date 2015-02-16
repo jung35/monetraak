@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-use MoneTraak\User;
+use MoneTraak\Models\User;
 
 class DatabaseSeeder extends Seeder {
 

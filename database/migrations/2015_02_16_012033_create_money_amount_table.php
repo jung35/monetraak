@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMoneySpentTable extends Migration {
+class CreateMoneyAmountTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,9 +12,10 @@ class CreateMoneySpentTable extends Migration {
      */
     public function up()
     {
-        Schema::create('money_spent', function(Blueprint $table)
+        Schema::create('money_amount', function(Blueprint $table)
         {
             $table->increments('id');
+            $table->boolean('type');
             $table->integer('money_id')->unsigned();
             $table->foreign('money_id')->references('id')->on('money');
             $table->float('amount');
@@ -31,7 +32,7 @@ class CreateMoneySpentTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('money_spent');
+        Schema::drop('money_amount');
     }
 
 }

@@ -13,9 +13,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 @if (Auth::check())
                     <ul class="nav navbar-nav">
-                        <li><a href="#" data-toggle="modal" data-target="#moneyReceived"><span class="glyphicon glyphicon-plus"></span> Received</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Spent</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-plus"></span> To Save</a></li>
+                        <li><a href="{{ route('money.index') }}">Money Track</a></li>
                     </ul>
                 @endif
 

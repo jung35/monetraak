@@ -24,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		$router->model('money', 'MoneTraak\Money');
+		$router->model('money', 'MoneTraak\Models\Money\Money');
 	}
 
 	/**

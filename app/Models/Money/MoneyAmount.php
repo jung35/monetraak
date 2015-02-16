@@ -3,16 +3,17 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Money extends Model {
+class MoneyAmount extends Model {
 
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['type', 'amount', 'description'];
 
-    public function user()
+    public function money()
     {
-        return $this->belongsTo('MoneTraak\Models\User');
+        return $this->belongsTo('MoneTraak\Models\Money\Money');
     }
+
 }

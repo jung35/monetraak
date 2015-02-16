@@ -18,4 +18,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('money', 'MoneyController');
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::resource('money', 'MoneyController');
+});

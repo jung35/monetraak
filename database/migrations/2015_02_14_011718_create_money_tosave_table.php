@@ -15,10 +15,10 @@ class CreateMoneyTosaveTable extends Migration {
         Schema::create('money_tosave', function(Blueprint $table)
         {
             $table->increments('id');
+            $table->boolean('type');
             $table->integer('money_id')->unsigned();
             $table->foreign('money_id')->references('id')->on('money');
             $table->integer('priority');
-            $table->string('type');
             $table->float('amount');
             $table->mediumText('description');
             $table->softDeletes();

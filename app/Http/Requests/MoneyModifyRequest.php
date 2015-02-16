@@ -2,7 +2,7 @@
 
 use MoneTraak\Http\Requests\Request;
 
-class MoneyRequest extends Request {
+class MoneyModifyRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,9 @@ class MoneyRequest extends Request {
     public function rules()
     {
         return [
-            'title'       => 'required',
-            'description' => 'required'
+            'type'        => 'numeric|required',
+            'amount'      => 'numeric|required',
+            'description' => 'max:150'
         ];
     }
 

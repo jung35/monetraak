@@ -17,7 +17,7 @@ class MoneyController extends Controller {
      */
     public function index(Money $money)
     {
-        return $money->all();
+        return view('money.index', compact('money'));
     }
 
     /**
@@ -37,7 +37,6 @@ class MoneyController extends Controller {
      */
     public function store(MoneyRequest $request)
     {
-
         $user = $request->user();
         $user->money()->save(new Money($request->all()));
 
@@ -50,9 +49,9 @@ class MoneyController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(Money $money)
     {
-        return "MoneyController@show";
+        return view('money.show', compact('money'));
     }
 
     /**
@@ -61,9 +60,9 @@ class MoneyController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Money $money)
     {
-        return "MoneyController@edit";
+        return view('money.edit', compact('money'));
     }
 
     /**
@@ -72,9 +71,11 @@ class MoneyController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(MoneyRequest $request, Money $money)
     {
-        return "MoneyController@update";
+        $money->update($request->all());
+
+        return redirect()->route('money.show', $money);
     }
 
     /**
@@ -83,9 +84,11 @@ class MoneyController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Money $money)
     {
-        return "MoneyController@destroy";
+        $money->delete();
+
+        return redirect()->route('money.index');
     }
 
 }
