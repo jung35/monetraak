@@ -88,7 +88,11 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="form-group">
-                                            <textarea name="log" cols="30" rows="10" class="form-control" disabled></textarea>
+                                            <textarea name="log" cols="30" rows="10" class="form-control" disabled>
+@foreach($moneyLogs as $moneyLog)
+{{ $moneyLog->toString() }}
+@endforeach
+</textarea>
                                         </div>
                                     </div>
                                 </div>

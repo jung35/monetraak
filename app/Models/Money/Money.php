@@ -20,4 +20,9 @@ class Money extends Model {
     {
         return $this->hasMany('MoneTraak\Models\Money\MoneyAmount');
     }
+
+    public function moneyLog()
+    {
+        return $this->hasMany('MoneTraak\Models\Money\MoneyLog');
+    }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use MoneTraak\Http\Requests\MoneyRequest;
 
 use MoneTraak\Models\Money\Money;
+use MoneTraak\Models\Money\MoneyLog;
 
 class MoneyController extends Controller {
 
@@ -51,7 +52,12 @@ class MoneyController extends Controller {
      */
     public function show(Money $money)
     {
-        return view('money.show', compact('money'));
+        $moneyLogs = MoneyLog::whereUserId(\Auth::user()->id)
+            ->whereMoneyId($money->id)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('money.show', compact('money', 'moneyLogs'));
     }
 
     /**

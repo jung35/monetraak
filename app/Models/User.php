@@ -31,6 +31,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    public function moneyLog()
+    {
+        return $this->hasMany('MoneTraak\Models\Money\MoneyLog');
+    }
+
 	public function money()
 	{
 		return $this->hasMany('MoneTraak\Models\Money\Money');

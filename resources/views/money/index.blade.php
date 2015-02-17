@@ -19,11 +19,11 @@
                         </div>
                     </div>
                 </div>
-                @foreach($money->all() as $moneyList)
-                    <div class="panel-body">
-                        <div class="moneyList">
-                            <div class="row">
-                                <div class="col-xs=12 col-sm-6 col-md-4">
+                <div class="panel-body">
+                    <div class="moneyList">
+                        <div class="row">
+                            @foreach($money->all() as $moneyList)
+                                <div class="col-xs-12 col-sm-6 col-md-4">
                                     <a href="{{ route('money.show', $moneyList) }}">
                                         <div class="panel panel-custom">
                                             <div class="panel-heading">{{ $moneyList->title }}</div>
@@ -34,10 +34,10 @@
                                         </div>
                                     </a>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </div>

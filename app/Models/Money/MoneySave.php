@@ -3,13 +3,13 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MoneyAmount extends Model {
+class MoneySave extends Model {
 
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['type', 'amount', 'description'];
+    protected $fillable = ['type', 'priority', 'amount', 'description'];
 
     public function money()
     {
@@ -20,4 +20,5 @@ class MoneyAmount extends Model {
     {
         return $this->type ? 'subtract_money' : 'add_money';
     }
+
 }
