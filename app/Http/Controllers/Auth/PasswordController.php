@@ -1,6 +1,6 @@
-<?php namespace monetraak\Http\Controllers\Auth;
+<?php namespace MoneTraak\Http\Controllers\Auth;
 
-use monetraak\Http\Controllers\Controller;
+use MoneTraak\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;

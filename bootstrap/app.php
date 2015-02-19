@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
 	'Illuminate\Contracts\Http\Kernel',
-	'monetraak\Http\Kernel'
+	'MoneTraak\Http\Kernel'
 );
 
 $app->singleton(
 	'Illuminate\Contracts\Console\Kernel',
-	'monetraak\Console\Kernel'
+	'MoneTraak\Console\Kernel'
 );
 
 $app->singleton(
 	'Illuminate\Contracts\Debug\ExceptionHandler',
-	'monetraak\Exceptions\Handler'
+	'MoneTraak\Exceptions\Handler'
 );
 
 /*

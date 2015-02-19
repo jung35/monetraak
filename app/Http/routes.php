@@ -11,11 +11,26 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::group(['prefix' => 'money'], function()
+    {
+        Route::post('/{money}/amount', [
+            'as'   => 'money.modify',
+            'uses' => 'Money\MoneyHandlerController@modify'
+        ]);
+        Route::post('/{money}/save', [
+            'as'   => 'money.save',
+            'uses' => 'Money\MoneyHandlerController@save'
+        ]);
+    });
+
+    Route::resource('money', 'MoneyController');
+});

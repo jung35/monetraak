@@ -1,4 +1,4 @@
-<?php namespace monetraak\Http\Requests;
+<?php namespace MoneTraak\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

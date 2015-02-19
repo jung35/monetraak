@@ -1,4 +1,4 @@
-<?php namespace monetraak\Http\Middleware;
+<?php namespace MoneTraak\Http\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;

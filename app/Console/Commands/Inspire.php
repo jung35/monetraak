@@ -1,4 +1,4 @@
-<?php namespace monetraak\Console\Commands;
+<?php namespace MoneTraak\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

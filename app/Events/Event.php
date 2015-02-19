@@ -1,4 +1,4 @@
-<?php namespace monetraak\Events;
+<?php namespace MoneTraak\Events;
 
 abstract class Event {
 

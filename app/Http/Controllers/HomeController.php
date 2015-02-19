@@ -1,4 +1,4 @@
-<?php namespace monetraak\Http\Controllers;
+<?php namespace MoneTraak\Http\Controllers;
 
 class HomeController extends Controller {
 

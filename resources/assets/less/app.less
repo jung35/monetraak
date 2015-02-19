@@ -6,3 +6,68 @@
 body, label, .checkbox label {
 	font-weight: 300;
 }
+
+.moneyList {
+    a:not(.btn) {
+        &:hover, &:focus {
+            text-decoration: none;
+            .panel-custom {
+                .panel-body {
+                    background: rgba(255, 255, 255, .6);
+                }
+                background: rgba(0, 0, 0, .05);
+                color: black;
+            }
+        }
+
+        display: block;
+        text-decoration: none;
+    }
+
+    .panel-custom {
+        .panel-heading {
+            font-weight: bold;
+            font-size: 2em;
+            padding: 10px;
+        }
+
+        .panel-body {
+            background: white;
+            color: black;
+            border-top: 1px solid rgba(0, 0, 0, .1);
+            padding: 10px 10px 0;
+        }
+
+        background: rgba(0, 0, 0, .01);
+        border: 1px solid rgba(0, 0, 0, .1);
+    }
+}
+
+.panel-default {
+    .title {
+        padding: 0;
+        margin: 0;
+    }
+
+    h2.title {
+        small {
+            font-size: .5em;
+        }
+    }
+
+    .panel-heading {
+        padding: 10px;
+    }
+
+    .panel-body {
+        padding: 10px 10px 0;
+    }
+}
+
+.form-inline {
+    display: inline-block;
+}
+
+tr.money-list-end > td {
+    border-top: 2px solid #dddddd !important;
+}

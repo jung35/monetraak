@@ -136,14 +136,16 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
+		'Illuminate\Html\HtmlServiceProvider',
+
 		/*
 		 * Application Service Providers...
 		 */
-		'monetraak\Providers\AppServiceProvider',
-		'monetraak\Providers\BusServiceProvider',
-		'monetraak\Providers\ConfigServiceProvider',
-		'monetraak\Providers\EventServiceProvider',
-		'monetraak\Providers\RouteServiceProvider',
+		'MoneTraak\Providers\AppServiceProvider',
+		'MoneTraak\Providers\BusServiceProvider',
+		'MoneTraak\Providers\ConfigServiceProvider',
+		'MoneTraak\Providers\EventServiceProvider',
+		'MoneTraak\Providers\RouteServiceProvider',
 
 	],
 
@@ -192,6 +194,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Form'		=> 'Illuminate\Html\FormFacade',
+		'Html'		=> 'Illuminate\Html\HtmlFacade',
 
 	],
 

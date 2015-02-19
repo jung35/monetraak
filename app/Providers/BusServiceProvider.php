@@ -1,4 +1,4 @@
-<?php namespace monetraak\Providers;
+<?php namespace MoneTraak\Providers;
 
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +16,7 @@ class BusServiceProvider extends ServiceProvider {
 		$dispatcher->mapUsing(function($command)
 		{
 			return Dispatcher::simpleMapping(
-				$command, 'monetraak\Commands', 'monetraak\Handlers\Commands'
+				$command, 'MoneTraak\Commands', 'MoneTraak\Handlers\Commands'
 			);
 		});
 	}
