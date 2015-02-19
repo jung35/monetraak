@@ -21,6 +21,11 @@ class Money extends Model {
         return $this->hasMany('MoneTraak\Models\Money\MoneyAmount');
     }
 
+    public function moneySave()
+    {
+        return $this->hasMany('MoneTraak\Models\Money\MoneySave');
+    }
+
     public function moneyLog()
     {
         return $this->hasMany('MoneTraak\Models\Money\MoneyLog');

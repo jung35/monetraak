@@ -37,22 +37,30 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Type</th>
-                                            <th class="text-right">Amount</th>
+                                            <th>Title</th>
+                                            <th width="90px" class="text-right">Saved</th>
+                                            <th width="90px" class="text-right">To Save</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>ASD</td>
-                                            <td class="text-right">$91.00</td>
+                                        @foreach($moneyList as $moneyItem)
+                                            <tr>
+                                                <td>{{ $moneyItem->title }}</td>
+                                                <td class="text-right">${{ number_format($moneyItem->saved, 2) }}</td>
+                                                <td class="text-right">${{ number_format($moneyItem->to_save, 2) }}</td>
+                                            </tr>
+                                        @endforeach
+                                        <tr class="money-list-end">
+                                            <td class="text-danger">Money Used</td>
+                                            <td class="text-danger text-right">${{ number_format($moneyInfo->money_used, 2) }}</td>
+                                            <td class="text-right"></td>
                                         </tr>
-                                        <tr>
-                                            <td>ASD</td>
-                                            <td class="text-right">$91.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ASD</td>
-                                            <td class="text-right">$91.00</td>
+                                        <tr class="money-list-end">
+                                            <td></td>
+                                            <td class="text-right {{ $moneyInfo->money_final < 0 ? 'text-danger' : 'text-success' }}">
+                                                {{ $moneyInfo->money_final < 0 ? '-' : '' }}${{ number_format(abs($moneyInfo->money_final), 2) }}
+                                            </td>
+                                            <td class="text-right"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -78,8 +86,8 @@
                                                 <h4 class="title">Save Money</h4>
                                             </div>
                                             <div class="panel-body">
-                                                {!! Form::open() !!}
-                                                    @include('money.partials.smallForm', ['typeOptions' => ['Dollars', 'Percent (100% = 100.00)'], 'buttonText' => 'Save Money'])
+                                                {!! Form::open(['route' => ['money.save', $money->id], 'method' => 'POST']) !!}
+                                                    @include('money.partials.smallForm', ['titleRequired' => true,'typeOptions' => ['Dollars', 'Percent (100% = 100.00)'], 'buttonText' => 'Save Money'])
                                                 {!! Form::close() !!}
                                             </div>
                                         </div>

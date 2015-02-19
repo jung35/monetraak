@@ -26,6 +26,10 @@ Route::group(['middleware' => 'auth'], function()
             'as'   => 'money.modify',
             'uses' => 'Money\MoneyHandlerController@modify'
         ]);
+        Route::post('/{money}/save', [
+            'as'   => 'money.save',
+            'uses' => 'Money\MoneyHandlerController@save'
+        ]);
     });
 
     Route::resource('money', 'MoneyController');

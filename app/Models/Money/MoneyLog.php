@@ -14,8 +14,8 @@ class MoneyLog extends Model {
     private $messages = [
         'add_money'      => 'MONEY ADD : ${amount}',
         'subtract_money' => 'MONEY SUBTRACT : ${amount}',
+        'money_save'     => 'MONEY SAVE : ${amount}',
         'percent_save'   => 'PERCENT SAVE : {amount}%',
-        'money_save'     => 'MONEY SAVE : ${amount}'
     ];
 
     public function user()

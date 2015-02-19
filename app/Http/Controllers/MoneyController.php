@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use MoneTraak\Http\Requests\MoneyRequest;
 
 use MoneTraak\Models\Money\Money;
+use MoneTraak\Models\Money\MoneyAmount;
 use MoneTraak\Models\Money\MoneyLog;
 
 class MoneyController extends Controller {
@@ -52,12 +53,53 @@ class MoneyController extends Controller {
      */
     public function show(Money $money)
     {
-        $moneyLogs = MoneyLog::whereUserId(\Auth::user()->id)
-            ->whereMoneyId($money->id)
+        $moneyLogs = $money->moneyLog()
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('money.show', compact('money', 'moneyLogs'));
+        $moneySave = $money->moneySave()
+            ->orderBy('priority', 'asc')
+            ->get();
+
+        $moneyAddOnly = MoneyAmount::addAllAmounts($money->moneyAmount()->getAddOnly()->get());
+
+        $moneySubtractOnly = MoneyAmount::addAllAmounts($money->moneyAmount()->getSubtractOnly()->get());
+
+        $moneyList = [];
+
+        $currentAmount = $moneyAddOnly;
+
+        foreach($moneySave as $toSave) {
+            $amount = $toSave->amount * ($toSave->type ? $currentAmount/100 : 1);
+
+            $tempMoney = $moneyAddOnly;
+            $moneyAddOnly -= $amount;
+
+            $moneyList[] = (object) [
+                'title' => $toSave->title,
+                'to_save' => $amount,
+                'saved' => $moneyAddOnly > 0 ? $amount : $tempMoney
+            ];
+
+            if($moneyAddOnly <= 0) {
+                $moneyAddOnly = 0;
+            }
+        }
+
+        $moneyInfo = (object) [
+            'money_free' => $moneyAddOnly,
+            'money_used' => $moneySubtractOnly,
+            'money_final' => $moneyAddOnly - $moneySubtractOnly
+        ];
+
+        // dd($moneyList);
+
+        return view('money.show', compact(
+            'money',
+            'moneyLogs',
+            'moneyList',
+            'moneyInfo'
+        ));
     }
 
     /**

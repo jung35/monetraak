@@ -9,7 +9,7 @@ class MoneySave extends Model {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['type', 'priority', 'amount', 'description'];
+    protected $fillable = ['title', 'type', 'priority', 'amount', 'description'];
 
     public function money()
     {
@@ -18,7 +18,7 @@ class MoneySave extends Model {
 
     public function type()
     {
-        return $this->type ? 'subtract_money' : 'add_money';
+        return $this->type ? 'percent_save' : 'money_save';
     }
 
 }

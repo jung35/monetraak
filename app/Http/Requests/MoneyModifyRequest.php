@@ -21,11 +21,17 @@ class MoneyModifyRequest extends Request {
      */
     public function rules()
     {
-        return [
+        $rules = [
             'type'        => 'numeric|required',
             'amount'      => 'numeric|required',
             'description' => 'max:150'
         ];
+
+        if($this->request->get('title')) {
+            $rules['title'] = 'required|max:20';
+        }
+
+        return $rules;
     }
 
 }
