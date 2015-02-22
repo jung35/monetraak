@@ -35,7 +35,7 @@ elixir.extend('react', function (src, options) {
             .pipe(new notification().message('React Compiled!'));
     });
 
-    this.registerWatcher('react', options.srcDir + '/**/*.js');
+    this.registerWatcher('react', options.srcDir + '/**/*.jsx');
 
     return this.queueTask('react');
 });

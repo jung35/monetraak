@@ -13,11 +13,11 @@
                                 <h2 class="title">{{ $money->title }}</h2>
                             </div>
                             <div class="col-xs-4 col-sm-3 text-right">
-                                <a href="{{ route('money.edit', $money) }}" class="btn btn-primary">
+                                <a href="{{ route('api.v1.money.edit', $money) }}" class="btn btn-primary">
                                     <span class="glyphicon glyphicon-plus"></span>
                                     Edit
                                 </a>
-                                {!! Form::open(['route' => ['money.destroy', $money], 'method' => 'DELETE', 'class' => 'form-inline']) !!}
+                                {!! Form::open(['route' => ['api.v1.money.destroy', $money], 'method' => 'DELETE', 'class' => 'form-inline']) !!}
                                     <button type="submit" class="btn btn-danger">
                                         <span class="glyphicon glyphicon-minus"></span> Delete
                                     </button>
@@ -51,14 +51,9 @@
                                             </tr>
                                         @endforeach
                                         <tr class="money-list-end">
-                                            <td class="text-danger">Money Used</td>
-                                            <td class="text-danger text-right">${{ number_format($moneyInfo->money_used, 2) }}</td>
-                                            <td class="text-right"></td>
-                                        </tr>
-                                        <tr class="money-list-end">
                                             <td></td>
-                                            <td class="text-right {{ $moneyInfo->money_final < 0 ? 'text-danger' : 'text-success' }}">
-                                                {{ $moneyInfo->money_final < 0 ? '-' : '' }}${{ number_format(abs($moneyInfo->money_final), 2) }}
+                                            <td class="text-right">
+                                               ${{ number_format($moneyInfo->money_final, 2) }}
                                             </td>
                                             <td class="text-right"></td>
                                         </tr>
@@ -73,7 +68,7 @@
                                                 <h4 class="title">Modify Money</h4>
                                             </div>
                                             <div class="panel-body">
-                                                {!! Form::open(['route' => ['money.modify', $money->id], 'method' => 'POST']) !!}
+                                                {!! Form::open(['route' => ['api.v1.money.modify', $money->id], 'method' => 'POST']) !!}
                                                     @include('money.partials.smallForm', ['typeOptions' => ['Add', 'Subtract'], 'buttonText' => 'Submit'])
                                                 {!! Form::close() !!}
                                             </div>
@@ -86,7 +81,7 @@
                                                 <h4 class="title">Save Money</h4>
                                             </div>
                                             <div class="panel-body">
-                                                {!! Form::open(['route' => ['money.save', $money->id], 'method' => 'POST']) !!}
+                                                {!! Form::open(['route' => ['api.v1.money.save', $money->id], 'method' => 'POST']) !!}
                                                     @include('money.partials.smallForm', ['titleRequired' => true,'typeOptions' => ['Dollars', 'Percent (100% = 100.00)'], 'buttonText' => 'Save Money'])
                                                 {!! Form::close() !!}
                                             </div>

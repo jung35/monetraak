@@ -12,7 +12,7 @@
                             <h2 class="title">Money Track</h2>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <a href="{{ route('money.create') }}" class="btn btn-primary">
+                            <a href="{{ route('view.money') }}" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 Create New
                             </a>
@@ -21,10 +21,10 @@
                 </div>
                 <div class="panel-body">
                     <div class="moneyList">
-                        <div class="row">
-                            @foreach($money->all() as $moneyList)
+                        <div class="row" id="moneyList">
+                           {{--  @foreach($money->all() as $moneyList)
                                 <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <a href="{{ route('money.show', $moneyList) }}">
+                                    <a href="{{ route('view.money', $moneyList) }}">
                                         <div class="panel panel-custom">
                                             <div class="panel-heading">{{ $moneyList->title }}</div>
 
@@ -34,7 +34,7 @@
                                         </div>
                                     </a>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                     </div>
                 </div>
@@ -43,4 +43,8 @@
     </div>
 </div>
 
+@stop
+
+@section('js')
+    <script src="/js/money/index.js" type="text/jsx"></script>
 @stop
