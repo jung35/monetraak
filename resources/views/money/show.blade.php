@@ -109,3 +109,7 @@
 </div>
 
 @stop
+
+@section('js')
+    <script src="/js/money/show.js" type="text/jsx"></script>
+@stop

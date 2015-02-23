@@ -12,9 +12,21 @@ class MoneyViewController extends Controller {
      *
      * @return Response
      */
-    public function view($money = null)
+    public function view($data = null)
     {
         $view = view('money.index');
+
+        if(is_numeric($data)) {
+            return view('money.show');
+        }
+
+        if(!is_null($data)) {
+            switch($data) {
+                case 'create':
+                    $view = view('money.create');
+                    break;
+            }
+        }
 
         return $view;
     }

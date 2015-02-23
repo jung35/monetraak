@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function()
         });
     });
 
-    Route::get('money/{money?}', [
+    Route::get('money/{data?}', [
         'as'   => 'view.money',
         'uses' => 'MoneyViewController@view'
     ]);

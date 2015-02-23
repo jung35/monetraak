@@ -19,7 +19,7 @@ class MoneyController extends Controller {
      */
     public function index(Money $money)
     {
-        return $money->all();
+        return \Auth::user()->money()->get();
     }
 
     /**
@@ -40,9 +40,9 @@ class MoneyController extends Controller {
     public function store(MoneyRequest $request)
     {
         $user = $request->user();
-        $user->money()->save(new Money($request->all()));
 
-        return redirect()->route('money.index');
+
+        return $user->money()->save(new Money($request->all()));
     }
 
     /**

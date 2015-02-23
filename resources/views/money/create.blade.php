@@ -19,3 +19,7 @@
 </div>
 
 @stop
+
+@section('js')
+    <script src="/js/money/create.js" type="text/jsx"></script>
+@stop
