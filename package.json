@@ -1,5 +1,5 @@
 {
-  "devDependencies": {
+  "dependencies": {
     "gulp": "^3.8.11",
     "gulp-notify": "^2.2.0",
     "gulp-react": "^2.0.0",

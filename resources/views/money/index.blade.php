@@ -1,19 +1,5 @@
 @extends('app')
 
-@section('modal')
-    <div class="modal fade" id="moneyCreateModal" tabindex="-1" role="dialog" aria-labelledby="moneyCreateModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="moneyCreateModalLabel">Create New Tracker</h4>
-                </div>
-                <div id="MoneyForm"></div>
-            </div>
-        </div>
-    </div>
-@stop
-
 @section('content')
 
 <div class="container">
