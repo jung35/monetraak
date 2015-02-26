@@ -14,30 +14,30 @@ var MoneyIndex = React.createClass({
 
     },
 
-    submitFormToServer: function(title, description) {
-        alert('adfadsfasdfa');
-        // $.ajax({
-        //     url: '/api/v1/money',
-        //     dataType: 'json',
-        //     type: 'POST',
-        //     data: {
-        //         _token: _crsf,
-        //         title: title,
-        //         description: description
-        //     },
-        //     success: function(data) {
-        //         this.setState({data: data});
-        //     }.bind(this),
-        //         error: function(xhr, status, err) {
-        //         console.error(this.props.url, status, err.toString());
-        //     }.bind(this)
-        // });
+    submitFormToServer: function(data) {
+        $.ajax({
+            url: '/api/v1/money',
+            dataType: 'json',
+            type: 'POST',
+            data: {
+                _token: _crsf,
+                title: data.title,
+                description: data.description
+            },
+            success: function(data) {
+                this.state.data.reverse();
+                this.state.data = this.state.data.concat([data]);
+                this.state.data.reverse();
+                this.setState({data: this.state.data});
+            }.bind(this),
+                error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
     },
 
     getInitialState: function() {
-        return {
-            data: []
-        };
+        return { data: [] };
     },
 
     componentDidMount: function() {
@@ -64,7 +64,7 @@ var MoneyIndex = React.createClass({
 
         return (
             <div className="row">
-                <MoneyForm MoneyFormSend={this.submitFormToServer} />
+                <MoneyForm ErrorMessage="" MoneyFormSend={this.submitFormToServer} />
                 {moneyItemNodes}
             </div>
         );
@@ -80,8 +80,15 @@ var MoneyForm = React.createClass({
         ,   description = this.refs.description.getDOMNode().value.trim();
 
         if (!title || !description) {
+            this.setState({
+                ErrorMessage: "All fields need to be filled out!"
+            });
+
             return;
         }
+            this.setState({
+                ErrorMessage: ""
+            });
 
         this.props.MoneyFormSend({
             title: title,
@@ -89,7 +96,13 @@ var MoneyForm = React.createClass({
         });
 
         this.refs.title.getDOMNode().value = '';
-        this.refs.description.getDOMNode().value   = '';
+        this.refs.description.getDOMNode().value = '';
+
+        $('#moneyCreateModal').modal('hide');
+    },
+
+    getInitialState: function() {
+        return { ErrorMessage: "" };
     },
 
     render: function() {
@@ -103,6 +116,7 @@ var MoneyForm = React.createClass({
                         </div>
                         <form onSubmit={this.handleSubmit}>
                             <div className="modal-body">
+                                <MoneyFormFlashMessage ErrorMessage={this.state.ErrorMessage} />
                                 <div className="form-group">
                                     <label htmlFor="title">Title:</label>
                                     <input className="form-control" ref="title" type="text" id="title" />
@@ -122,6 +136,15 @@ var MoneyForm = React.createClass({
                 </div>
             </div>
 
+        );
+    }
+});
+
+var MoneyFormFlashMessage = React.createClass({
+    render: function() {
+        var message = this.props.ErrorMessage;
+        return (
+            <div class="alert alert-danger" role="alert">{message}</div>
         );
     }
 });

@@ -19,7 +19,7 @@ class MoneyController extends Controller {
      */
     public function index(Money $money)
     {
-        return \Auth::user()->money()->get();
+        return \Auth::user()->money()->orderBy('id', 'desc')->get();
     }
 
     /**
