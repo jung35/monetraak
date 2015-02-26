@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 @if (Auth::check())
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('money.index') }}">Money Track</a></li>
+                        <li><a href="{{ route('view.money') }}">Money Track</a></li>
                     </ul>
                 @endif
 

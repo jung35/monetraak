@@ -4,3 +4,7 @@ composer.phar
 .env
 
 /public/css/app.css
+<<<<<<< HEAD
+/public/js/
+=======
+>>>>>>> master

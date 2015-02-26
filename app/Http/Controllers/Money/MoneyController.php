@@ -1,4 +1,4 @@
-<?php namespace MoneTraak\Http\Controllers;
+<?php namespace MoneTraak\Http\Controllers\Money;
 
 use MoneTraak\Http\Requests;
 use MoneTraak\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class MoneyController extends Controller {
      */
     public function index(Money $money)
     {
-        return view('money.index', compact('money'));
+        return \Auth::user()->money()->get();
     }
 
     /**
@@ -27,10 +27,10 @@ class MoneyController extends Controller {
      *
      * @return Response
      */
-    public function create()
-    {
-        return view('money.create');
-    }
+    // public function create()
+    // {
+    //     return view('money.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -40,9 +40,9 @@ class MoneyController extends Controller {
     public function store(MoneyRequest $request)
     {
         $user = $request->user();
-        $user->money()->save(new Money($request->all()));
 
-        return redirect()->route('money.index');
+
+        return $user->money()->save(new Money($request->all()));
     }
 
     /**
@@ -69,13 +69,15 @@ class MoneyController extends Controller {
 
         $currentAmount = $moneyAddOnly;
 
+        $moneyAddOnly -= $moneySubtractOnly;
+
         foreach($moneySave as $toSave) {
             $amount = $toSave->amount * ($toSave->type ? $currentAmount/100 : 1);
 
             $tempMoney = $moneyAddOnly;
             $moneyAddOnly -= $amount;
 
-            $moneyList[] = (object) [
+            $moneyList[] = [
                 'title' => $toSave->title,
                 'to_save' => $amount,
                 'saved' => $moneyAddOnly > 0 ? $amount : $tempMoney
@@ -86,20 +88,20 @@ class MoneyController extends Controller {
             }
         }
 
-        $moneyInfo = (object) [
+        $moneyInfo = [
             'money_free' => $moneyAddOnly,
             'money_used' => $moneySubtractOnly,
-            'money_final' => $moneyAddOnly - $moneySubtractOnly
+            'money_final' => $moneyAddOnly
         ];
 
         // dd($moneyList);
 
-        return view('money.show', compact(
+        return compact(
             'money',
             'moneyLogs',
             'moneyList',
             'moneyInfo'
-        ));
+        );
     }
 
     /**

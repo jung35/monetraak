@@ -20,17 +20,28 @@ Route::controllers([
 
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::group(['prefix' => 'money'], function()
+    Route::group(['prefix' => 'api'], function()
     {
-        Route::post('/{money}/amount', [
-            'as'   => 'money.modify',
-            'uses' => 'Money\MoneyHandlerController@modify'
-        ]);
-        Route::post('/{money}/save', [
-            'as'   => 'money.save',
-            'uses' => 'Money\MoneyHandlerController@save'
-        ]);
+        Route::group(['prefix' => 'v1'], function()
+        {
+            Route::group(['prefix' => 'money'], function()
+            {
+                Route::post('/{money}/amount', [
+                    'as'   => 'api.v1.money.modify',
+                    'uses' => 'Money\MoneyHandlerController@modify'
+                ]);
+                Route::post('/{money}/save', [
+                    'as'   => 'api.v1.money.save',
+                    'uses' => 'Money\MoneyHandlerController@save'
+                ]);
+            });
+
+            Route::resource('money', 'Money\MoneyController');
+        });
     });
 
-    Route::resource('money', 'MoneyController');
+    Route::get('money/{data?}', [
+        'as'   => 'view.money',
+        'uses' => 'MoneyViewController@view'
+    ]);
 });
