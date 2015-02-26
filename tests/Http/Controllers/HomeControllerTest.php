@@ -3,15 +3,12 @@
 use \MoneTraak\Models\User;
 use \Auth;
 
-class RouteTest extends TestCase {
-
-    protected $user;
+class HomeControllerTest extends TestCase {
 
     public function testNoAuth()
     {
         $this->assertFalse(Auth::check());
 
-        //Index
         $this->call('GET', '/');
         $this->assertRedirectedTo('/auth/login');
 
@@ -33,6 +30,15 @@ class RouteTest extends TestCase {
         $this->be($user);
 
         $this->assertTrue(Auth::check());
+
+        $this->call('GET', '/');
+        $this->assertResponseOk();
+
+        $this->call('GET', '/auth/login');
+        $this->assertRedirectedTo('/');
+
+        $this->call('GET', '/auth/register');
+        $this->assertRedirectedTo('/');
     }
 
 }

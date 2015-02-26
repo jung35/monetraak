@@ -10,21 +10,23 @@ class MoneyViewController extends Controller {
     /**
      * Display a listing of the resource.
      *
+     * @param mixed $data
      * @return Response
      */
+
     public function view($data = null)
     {
         $view = view('money.index');
 
         if(is_numeric($data)) {
-            return view('money.show');
-        }
-
-        if(!is_null($data)) {
-            switch($data) {
-                case 'create':
-                    $view = view('money.create');
-                    break;
+            $view = view('money.show');
+        } else {
+            if(!is_null($data)) {
+                switch($data) {
+                    case 'create':
+                        $view = view('money.create');
+                        break;
+                }
             }
         }
 

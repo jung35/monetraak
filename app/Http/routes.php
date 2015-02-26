@@ -20,6 +20,28 @@ Route::controllers([
 
 Route::group(['middleware' => 'auth'], function()
 {
+
+    Route::get('money/{data?}', [
+        'as'   => 'view.money',
+        'uses' => 'MoneyViewController@view'
+    ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Route::group(['prefix' => 'api'], function()
     {
         Route::group(['prefix' => 'v1'], function()
@@ -39,9 +61,4 @@ Route::group(['middleware' => 'auth'], function()
             Route::resource('money', 'Money\MoneyController');
         });
     });
-
-    Route::get('money/{data?}', [
-        'as'   => 'view.money',
-        'uses' => 'MoneyViewController@view'
-    ]);
 });
